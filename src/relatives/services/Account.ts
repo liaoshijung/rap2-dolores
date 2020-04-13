@@ -54,10 +54,12 @@ export default {
   login({
     email,
     password,
+      type,
     captcha,
   }: {
     email: string;
     password: string;
+    type: string;
     captcha: string;
   }) {
     return fetch(`${serve}/account/login`, {
@@ -66,6 +68,7 @@ export default {
       body: JSON.stringify({
         email,
         password,
+        type,
         captcha,
       }),
       headers: {

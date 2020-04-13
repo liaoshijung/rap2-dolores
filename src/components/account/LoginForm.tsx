@@ -74,11 +74,12 @@ export default function LoginForm() {
   const { pathname, hash, search } = router.location
   const handleSubmit = (e?: any) => {
     e && e.preventDefault()
+    const type = 'ldap'
     if (!email || !password || !captcha) {
       dispatch(showMessage(`请输入账号、密码、验证码`, MSG_TYPE.WARNING))
     } else {
       dispatch(
-        login({ email, password, captcha }, () => {
+        login({ email, password, captcha, type }, () => {
           const uri = URI(pathname + hash + search)
           const original = uri.search(true).original
           if (original) {
