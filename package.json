@@ -7,7 +7,7 @@
     "dev": "npm run start",
     "build-css": "node ./node_modules/sass/sass src/:src/ --quiet",
     "watch-css": "npm run build-css && node ./node_modules/sass/sass src/:src/ --watch",
-    "start-js": "react-scripts start",
+    "start-js": "react-app-rewired start",
     "start": "npm-run-all -p watch-css start-js --max-old-space-size=4096",
     "build": "npm run lint && npm run build-css && react-scripts build",
     "test-backup": "npm run lint && react-scripts test --env=jsdom",
@@ -111,11 +111,14 @@
     "npm-run-all": "4.1.5",
     "pre-commit": "^1.2.2",
     "react-scripts": "^3.1.2",
+    "react-app-rewired": "^2.1.5",
+    "customize-cra": "^0.9.1",
     "standard": "14.3.1",
     "tslint": "^5.20.0",
     "tslint-react": "^4.1.0",
     "tslint-react-hooks": "^2.2.1",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "http-proxy-middleware": "^1.0.3"
   },
   "pre-commit": [
     "lint"

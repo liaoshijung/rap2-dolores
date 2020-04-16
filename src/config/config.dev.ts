@@ -1,5 +1,5 @@
 const config: IConfig = {
-  serve: `http://${window.location.hostname}:8080`,
+  serve: `${document.location.origin}/api`,
   keys: ['some secret hurr'],
   session: {
     key: 'koa:sess',
