@@ -75,7 +75,7 @@ export default function LoginForm() {
   const handleSubmit = (e?: any) => {
     e && e.preventDefault()
     const type = isLdap ? 'ldap' : 'normal'
-    if (!email || !password || !captcha) {
+    if (!email || !password) {
       dispatch(showMessage(`请输入账号、密码、验证码`, MSG_TYPE.WARNING))
     } else {
       dispatch(
@@ -137,26 +137,6 @@ export default function LoginForm() {
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>}
-              />
-            </FormControl>
-          </ListItem>
-          <ListItem>
-            <FormControl fullWidth={true}>
-              <InputLabel htmlFor="captcha">验证码</InputLabel>
-              <Input
-                tabIndex={2}
-                name="captcha"
-                value={captcha}
-                autoComplete="off"
-                onKeyDown={e => e.keyCode === 13 && handleSubmit()}
-                onChange={e => setCaptcha(e.target.value)}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton>
-                      <CodeIcon />
-                    </IconButton>
-                  </InputAdornment>
-                }
               />
             </FormControl>
           </ListItem>
