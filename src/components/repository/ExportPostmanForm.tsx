@@ -18,7 +18,7 @@ export default function ExportPostmanForm(props: {
   const postmanLink = `${config.serve}/export/postman?id=${repoId}`
   const markdownLink = `${config.serve}/export/markdown?id=${repoId}&origin=${window.location.origin}`
   const docxLink = `${config.serve}/export/docx?id=${repoId}&origin=${window.location.origin}`
-  const rapLink =`${config.serve}/repository/get?id=${repoId}`
+  const rapLink = `${config.serve}/repository/get?id=${repoId}`
 
   // const pdfLink = `${config.serve}/export/pdf?id=${repoId}&origin=${window.location.origin}`
   return (
