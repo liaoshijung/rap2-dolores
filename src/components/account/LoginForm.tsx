@@ -17,7 +17,7 @@ import { push } from 'connected-react-router'
 import { getRouter } from 'selectors/router'
 import { Link } from '../../family'
 
-const { serve } = config
+const { serve, isLdap } = config
 
 const useStyles = makeStyles(() => createStyles({
   root: {
@@ -74,11 +74,12 @@ export default function LoginForm() {
   const { pathname, hash, search } = router.location
   const handleSubmit = (e?: any) => {
     e && e.preventDefault()
-    if (!email || !password || !captcha) {
+    const type = isLdap ? 'ldap' : 'normal'
+    if (!email || !password) {
       dispatch(showMessage(`请输入账号、密码、验证码`, MSG_TYPE.WARNING))
     } else {
       dispatch(
-        login({ email, password, captcha }, () => {
+        login({ email, password, captcha, type }, () => {
           const uri = URI(pathname + hash + search)
           const original = uri.search(true).original as string
           if (original) {
@@ -139,38 +140,18 @@ export default function LoginForm() {
               />
             </FormControl>
           </ListItem>
-          <ListItem>
-            <FormControl fullWidth={true}>
-              <InputLabel htmlFor="captcha">验证码</InputLabel>
-              <Input
-                tabIndex={2}
-                name="captcha"
-                value={captcha}
-                autoComplete="off"
-                onKeyDown={e => e.keyCode === 13 && handleSubmit()}
-                onChange={e => setCaptcha(e.target.value)}
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton>
-                      <CodeIcon />
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-            </FormControl>
-          </ListItem>
           <ListItem className={classes.ctl}>
             <div className={classes.captchaWrapper} onClick={() => setCaptchaId(Date.now())}>
               <img src={`${serve}/captcha?t=${captchaId}`} className={classes.captcha} alt="captcha" />
               <Refresh />
             </div>
             <div className={classes.buttonWrapper}>
-              <Button variant="outlined" color="default" style={{ marginRight: 8 }} onClick={() => dispatch(push('/account/register'))}>注册</Button>
+              <Button variant="outlined" color="default" style={{ marginRight: 8 , display : isLdap ? 'none' : 'inherit'}} onClick={() => dispatch(push('/account/register'))}>注册</Button>
               <Button variant="contained" color="primary" tabIndex={3} onClick={handleSubmit}>登录</Button>
             </div>
           </ListItem>
           <ListItem className={classes.ctlend}>
-            <Link to="#" onClick={() => dispatch(push('/account/findpwd'))} className="operation ">忘记密码？</Link>
+            <Link to="#" style={{ display : isLdap ? 'none' : 'inherit'}} onClick={() => dispatch(push('/account/findpwd'))} className="operation ">忘记密码？</Link>
           </ListItem>
         </List>
       </Paper>

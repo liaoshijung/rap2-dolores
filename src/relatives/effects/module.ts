@@ -27,16 +27,19 @@ export function* updateModule(action: any) {
       id,
       name,
       description,
+      url,
     } = action.module
     const payload = yield call(EditorService.updateModule, {
       id,
       name,
       description,
+      url,
     })
     yield put(ModuleAction.updateModuleSucceeded({
       id,
       name: payload.name,
       description: payload.description,
+      url: payload.url,
     }))
     if (action.onResolved) { action.onResolved() }
   } catch (e) {

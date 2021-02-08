@@ -47,6 +47,7 @@ const FORM_STATE_INIT: Module = {
   id: 0,
   name: '',
   description: '',
+  url: '',
   repositoryid: 0,
   priority: 1,
 }
@@ -110,6 +111,14 @@ function ModuleForm(props: Props) {
                         component={TextField}
                         multiline={true}
                         fullWidth={true}
+                      />
+                    </div>
+                    <div className={classes.formItem}>
+                      <Field
+                          name="url"
+                          label="模块路径"
+                          component={TextField}
+                          fullWidth={true}
                       />
                     </div>
                   </div>
