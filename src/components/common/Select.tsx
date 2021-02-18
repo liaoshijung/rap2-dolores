@@ -75,7 +75,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-function NoOptionsMessage(props: NoticeProps<OptionType, any>) {
+function NoOptionsMessage(props: NoticeProps<OptionType>) {
   return (
     <Typography
       color="textSecondary"
@@ -93,7 +93,7 @@ function inputComponent({ inputRef, ...props }: InputComponentProps) {
   return <div ref={inputRef} {...props} />
 }
 
-function Control(props: ControlProps<OptionType, any>) {
+function Control(props: ControlProps<OptionType>) {
   return (
     <TextField
       style={{ minWidth: props.selectProps.minWidth || 350 }}
@@ -111,7 +111,7 @@ function Control(props: ControlProps<OptionType, any>) {
   )
 }
 
-function Option(props: OptionProps<OptionType, any>) {
+function Option(props: OptionProps<OptionType>) {
   return (
     <MenuItem
       ref={props.innerRef}
@@ -124,7 +124,7 @@ function Option(props: OptionProps<OptionType, any>) {
   )
 }
 
-function Placeholder(props: PlaceholderProps<OptionType, any>) {
+function Placeholder(props: PlaceholderProps<OptionType>) {
   return (
     <Typography
       color="textSecondary"
@@ -144,7 +144,7 @@ function SingleValue(props: SingleValueProps<OptionType>) {
   )
 }
 
-function ValueContainer(props: ValueContainerProps<OptionType, any>) {
+function ValueContainer(props: ValueContainerProps<OptionType>) {
   return <div className={props.selectProps.classes.valueContainer}>{props.children}</div>
 }
 
@@ -162,7 +162,7 @@ function MultiValue(props: MultiValueProps<OptionType>) {
   )
 }
 
-function Menu(props: MenuProps<OptionType, any>) {
+function Menu(props: MenuProps<OptionType>) {
   return (
     <Paper square={true} className={props.selectProps.classes.paper} {...props.innerProps}>
       {props.children}

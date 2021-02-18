@@ -137,7 +137,7 @@ function RepositoryForm(props: Props) {
             render={({ isSubmitting, setFieldValue, values }) => {
               function loadUserOptions(
                 input: string,
-              ): Promise<Array<{ label: string; value: number }>> {
+              ): Promise<{ label: string; value: number }[]> {
                 return new Promise(async resolve => {
                   const users = await AccountService.fetchUserList({ name: input })
                   const options = _.differenceWith(users.data, values.members || [], _.isEqual)

@@ -182,13 +182,13 @@ export interface Module {
 }
 
 export interface Interface {
-  id: number
+  id?: number
 
-  name: string
+  name?: string
 
-  url: string
+  url?: string
 
-  method: string
+  method?: string
 
   description?: string
 
