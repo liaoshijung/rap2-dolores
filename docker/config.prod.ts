@@ -1,9 +1,10 @@
 const config: IConfig = {
-  serve: `http://${window.location.hostname}:38080`,
+  serve: `${document.location.origin}/api`,
   keys: ['some secret hurr'],
   session: {
     key: 'koa:sess',
   },
+  isLdap: true
 }
 
 export default config

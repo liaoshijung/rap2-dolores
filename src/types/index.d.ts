@@ -3,7 +3,8 @@ declare interface IConfig {
   keys: string[]
   session: {
     key: string
-  }
+  },
+  isLdap: boolean
 }
 
 declare interface IMessage {

@@ -186,6 +186,7 @@ const relatives = {
     }).type](action: any) {
       try {
         const user = yield call(AccountService.login, action.user)
+        console.log(user)
         if (user.errMsg) {
           throw new Error(user.errMsg)
         }

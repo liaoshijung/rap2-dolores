@@ -5,6 +5,7 @@ const config: IConfig = {
   session: {
     key: 'koa:sess',
   },
+  isLdap: true
 }
 
 export default config

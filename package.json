@@ -6,7 +6,7 @@
   "scripts": {
     "build-css": "node ./node_modules/sass/sass src/:src/ --quiet",
     "watch-css": "npm run build-css && node ./node_modules/sass/sass src/:src/ --watch",
-    "start-js": "react-scripts start",
+    "start-js": "react-app-rewired start",
     "start": "npm-run-all -p watch-css start-js --max-old-space-size=4096",
     "build": "npm run lint && npm run build-css && react-scripts build",
     "test-backup": "npm run lint && react-scripts test --env=jsdom",
@@ -113,6 +113,8 @@
     "npm-run-all": "4.1.5",
     "pre-commit": "^1.2.2",
     "react-scripts": "^3.1.2",
+    "react-app-rewired": "^2.1.5",
+    "customize-cra": "^0.9.1",
     "standard": "14.3.1",
     "tslint": "^6.1.2",
     "tslint-react": "^5.0.0",

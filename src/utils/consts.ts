@@ -1,6 +1,9 @@
 export const TYPES = [
   'String',
   'Number',
+  'Long',
+  'Double',
+  'Date',
   'Boolean',
   'Object',
   'Array',
@@ -23,7 +26,6 @@ export enum CACHE_KEY {
   GUIDE_20200714 = 'GUIDE_20200714',
 
 }
-
 
 export const TablePaginationProps = {
   labelRowsPerPage: '每页条目数',

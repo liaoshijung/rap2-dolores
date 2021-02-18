@@ -118,7 +118,7 @@ const InterfaceWrap = connect(mapStateToProps, mapDispatchToProps)(InterfaceBase
 
 interface InterfaceListProps {
   itfs?: Interface[]
-  itf?: Interface
+  itf?: any
   curItf: Interface
   mod: Module
   repository: Repository
@@ -183,7 +183,6 @@ function InterfaceList(props: InterfaceListProps) {
   if (repository.modules.length === 0) {
     return <div style={{ height: 600 }}>请先添加模块</div>
   }
-
 
   return (
     <article className="InterfaceList">
