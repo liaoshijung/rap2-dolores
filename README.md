@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/thx/rap2-dolores.svg?branch=master)](https://travis-ci.org/thx/rap2-dolores)
 
+### Intro
 
 RAP2 is a new project based on [RAP1](https://github.com/thx/RAP). It has two components:
 RAP2是在RAP1基础上重做的新项目，它包含两个组件(对应两个Github Repository)。
