@@ -10,15 +10,17 @@ import { SlideUp } from 'components/common/Transition'
 
 export default function ExportPostmanForm(props: {
   repoId: number;
+  modId: number;
   open: boolean;
   onClose: () => void;
   title: string;
 }) {
-  const { repoId, open, onClose, title } = props
+  const { repoId,modId, open, onClose, title } = props
   const postmanLink = `${config.serve}/export/postman?id=${repoId}`
   const markdownLink = `${config.serve}/export/markdown?id=${repoId}&origin=${window.location.origin}`
   const docxLink = `${config.serve}/export/docx?id=${repoId}&origin=${window.location.origin}`
   const rapLink = `${config.serve}/repository/get?id=${repoId}`
+  const interfaceLink = `${config.serve}/export/interface?id=${repoId}&mod=${modId}`
 
   // const pdfLink = `${config.serve}/export/pdf?id=${repoId}&origin=${window.location.origin}`
   return (
@@ -79,6 +81,18 @@ export default function ExportPostmanForm(props: {
               <a href={rapLink} target="_blank" rel="noopener noreferrer">{rapLink}</a>
             </div>
             <div>用于备份，或在其它RAP2平台导入，打开后另存为保存即可。也可通过编程访问。</div>
+          </div>
+
+          <div>
+            <div>Interface:</div>
+            <div
+                className="alert alert-info"
+                role="alert"
+                style={{ margin: '8px 0' }}
+            >
+              <a href={interfaceLink} target="_blank" rel="noopener noreferrer">{interfaceLink}</a>
+            </div>
+            <div>点击以上链接下载，在前端项目中引入该TS文件，并在axios中加入相关接口。</div>
           </div>
 
           <div className="mt10">

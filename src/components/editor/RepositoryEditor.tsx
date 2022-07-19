@@ -226,6 +226,7 @@ class RepositoryEditor extends Component<Props, States> {
               title="导出"
               open={this.state.exportPostman}
               repoId={repository.id}
+              modId={+mod?.id || 0}
               onClose={() => this.setState({ exportPostman: false })}
             />
             <span
@@ -288,26 +289,26 @@ class RepositoryEditor extends Component<Props, States> {
             last: '完成',
           }}
           steps={[
-            {
-              title: '历史记录上线',
-              disableBeacon: true,
-              content: <Typography variant="h6">现在您可以查看项目修改历史了!</Typography>,
-              placement: 'top',
-              target: '.guide-1',
-            },
-            {
-              title: '历史记录上线',
-              disableBeacon: true,
-              content: <Typography variant="h6">您也可以查看指定接口的所有改动记录。</Typography>,
-              placement: 'top',
-              target: '.guide-2',
-            }, {
-              title: '皮肤自定义上线',
-              disableBeacon: true,
-              content: <Typography variant="h6">在系统偏好设置里，选择一个喜爱的颜色吧！比如原谅绿？</Typography>,
-              placement: 'top',
-              target: '.guide-3',
-            }
+            // {
+            //   title: '历史记录上线',
+            //   disableBeacon: true,
+            //   content: <Typography variant="h6">现在您可以查看项目修改历史了!</Typography>,
+            //   placement: 'top',
+            //   target: '.guide-1',
+            // },
+            // {
+            //   title: '历史记录上线',
+            //   disableBeacon: true,
+            //   content: <Typography variant="h6">您也可以查看指定接口的所有改动记录。</Typography>,
+            //   placement: 'top',
+            //   target: '.guide-2',
+            // }, {
+            //   title: '皮肤自定义上线',
+            //   disableBeacon: true,
+            //   content: <Typography variant="h6">在系统偏好设置里，选择一个喜爱的颜色吧！比如原谅绿？</Typography>,
+            //   placement: 'top',
+            //   target: '.guide-3',
+            // }
           ]}
         />
       </article>
