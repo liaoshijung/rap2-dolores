@@ -1,4 +1,4 @@
-# BUILDING 
+# BUILDING
 FROM node:lts-alpine AS builder
 
 WORKDIR /app
@@ -16,7 +16,7 @@ RUN npm install cnpm -g
 RUN cnpm install && \
     cnpm install typescript -g
 
-RUN cnpm run lint && \
+RUN npm run lint && \
     npm run build
 
 # nginx
