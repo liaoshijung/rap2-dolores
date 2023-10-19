@@ -11,13 +11,13 @@ class OrganizationRepositoryList extends Component<any, any> {
     const { location, auth, organization, repositories } = this.props
     if (!organization || !organization.id) { return <Spin /> }
 
-    const isOwned = organization.owner.id === auth.id
+    const isOwned = organization.owner.id === auth.id || organization.createrId === auth.id
     const isJoined = organization.members.find((item: any) => item.id === auth.id)
     return (
       <section className="RepositoryListWrapper">
         <div className="header"><span className="title">{organization.name}</span></div>
         <nav className="toolbar clearfix">
-          {isOwned || isJoined
+          {isOwned
             ? <CreateButton organization={organization} />
             : null
           }
