@@ -51,6 +51,10 @@ export interface Organization {
 
   members?: User[]
 
+  readerIds?: number[]
+
+  readers?: User[]
+
   owner?: User
 
   newOwner?: User
@@ -179,6 +183,8 @@ export interface Module {
   repository?: Repository
 
   repositoryId?: number
+
+  canUserEdit?: boolean
 }
 
 export interface Interface {

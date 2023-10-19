@@ -20,7 +20,7 @@ function OrganizationBlock(props: Props) {
   const auth = useSelector((state: RootState) => state.auth)
   const [update, setUpdate] = useState(false)
   const owned = organization.owner && organization.owner.id === auth.id
-  const joined = organization.members!.find(user => user.id === auth.id)
+  const joined = organization.members!.find(user => user.id === auth.id) || organization.readers!.find(user => user.id === auth.id)
   const selfHelpJoin = false // DONE 2.1 不允许自助加入团队
   const handleDelete = useHandleDelete()
   const handleExit = useHandleExit()
@@ -44,7 +44,7 @@ function OrganizationBlock(props: Props) {
           <span>{organization.owner!.fullname}</span>
         </div>
         <div className="toolbar">
-          {owned || joined ? ( // 拥有或已加入
+          {owned ? ( // 拥有或已加入
             <span
               className="fake-link"
               onClick={() => setUpdate(true)}

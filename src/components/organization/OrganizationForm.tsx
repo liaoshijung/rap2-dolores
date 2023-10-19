@@ -54,6 +54,7 @@ const FORM_STATE_INIT: Organization = {
   name: '',
   description: '',
   members: [],
+  readers: [],
   visibility: false,
 }
 
@@ -89,6 +90,7 @@ function OrganizationForm(props: Props) {
               const organization: Organization = {
                 ...values,
                 memberIds: (values.members || []).map(user => user.id),
+                readerIds: (values.readers || []).map(user => user.id),
               }
               const { owner, newOwner } = values
               if (newOwner && newOwner.id !== owner!.id) { organization.ownerId = newOwner.id }
@@ -160,6 +162,15 @@ function OrganizationForm(props: Props) {
                         loadOptions={loadUserOptions}
                         selected={values.members!.map(x => ({ label: x.fullname, value: x.id }))}
                         onChange={selected => setFieldValue('members', selected)}
+                      />
+                    </div>
+                    <div className={classes.formItem}>
+                      <div className={classes.formTitle}>查看成员</div>
+                      <UserList
+                        isMulti={true}
+                        loadOptions={loadUserOptions}
+                        selected={values.readers!.map(x => ({ label: x.fullname, value: x.id }))}
+                        onChange={selected => setFieldValue('readers', selected)}
                       />
                     </div>
                   </div>

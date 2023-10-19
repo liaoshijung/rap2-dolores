@@ -127,7 +127,7 @@ class RepositoryEditor extends Component<Props, States> {
     const {
       location: { params },
     } = this.props
-    const { repository: repositoryAsync } = this.props
+    const { repository: repositoryAsync,auth } = this.props
     if (!repositoryAsync.fetching && !repositoryAsync.data) {
       return <div className="p100 fontsize-30 text-center">未找到对应仓库</div>
     }
@@ -175,7 +175,7 @@ class RepositoryEditor extends Component<Props, States> {
           <div className="toolbar">
             {/* 编辑权限：拥有者或者成员 */}
 
-            {repository.canUserEdit ? (
+            {repository.ownerId === auth.id ? (
               <span className="g-link edit mr1" onClick={() => this.setState({ update: true })}>
                 <GoPencil /> 编辑
               </span>
