@@ -150,8 +150,8 @@ const relatives = {
         if (user.id) {
           yield put(AccountAction.fetchLoginInfoSucceeded(user))
         }
-      } catch (e) {
-        yield put(AccountAction.fetchLoginInfoFailed(e.message))
+      } catch (e:any) {
+        yield put(AccountAction.fetchLoginInfoFailed(e))
       }
     },
     *[AccountAction.addUser(null, null).type](action: any) {
@@ -166,8 +166,8 @@ const relatives = {
             if (user.id) {
               yield put(AccountAction.fetchLoginInfoSucceeded(user))
             }
-          } catch (e) {
-            yield put(AccountAction.fetchLoginInfoFailed(e.message))
+          } catch (e:any) {
+            yield put(AccountAction.fetchLoginInfoFailed(e))
           }
           yield put(push('/'))
         } else {
@@ -177,8 +177,8 @@ const relatives = {
         if (action.onResolved) {
           action.onResolved(isOk)
         }
-      } catch (e) {
-        yield put(AccountAction.addUserFailed(e.message))
+      } catch (e:any) {
+        yield put(AccountAction.addUserFailed(e))
       }
     },
     *[AccountAction.login({}, () => {
@@ -199,9 +199,9 @@ const relatives = {
         } else {
           yield put(AccountAction.loginFailed(undefined))
         }
-      } catch (e) {
+      } catch (e:any) {
         yield put(showMessage(e.message, MSG_TYPE.WARNING))
-        yield put(AccountAction.loginFailed(e.message))
+        yield put(AccountAction.loginFailed(e))
       }
     },
     *[AccountAction.logout().type]() {
@@ -209,7 +209,7 @@ const relatives = {
         yield call(AccountService.logout)
         yield put(AccountAction.logoutSucceeded())
         yield put(push('/account/login'))
-      } catch (e) {
+      } catch (e:any) {
         yield put(AccountAction.logoutFailed())
       }
     },
@@ -217,23 +217,23 @@ const relatives = {
       try {
         const count = yield call(AccountService.deleteUser, action.id)
         yield put(AccountAction.deleteUserSucceeded(count))
-      } catch (e) {
-        yield put(AccountAction.deleteUserFailed(e.message))
+      } catch (e:any) {
+        yield put(AccountAction.deleteUserFailed(e))
       }
     },
     *[AccountAction.fetchUserCount().type](action: any) {
       try {
         const count = yield call(AccountService.fetchUserCount as any, action)
         yield put(AccountAction.fetchUserCountSucceeded(count))
-      } catch (e) {
-        yield put(AccountAction.fetchUserCountFailed(e.message))
+      } catch (e:any) {
+        yield put(AccountAction.fetchUserCountFailed(e))
       }
     },
     *[AccountAction.fetchUserList().type](action: any) {
       try {
         const users = yield call(AccountService.fetchUserList, action)
         yield put(AccountAction.fetchUserListSucceeded(users))
-      } catch (e) {
+      } catch (e:any) {
         yield put(AccountAction.fetchUserListFailed(e.message))
       }
     },
@@ -245,9 +245,9 @@ const relatives = {
         }
         yield put(AccountAction.findpwdSucceeded())
         if (action.onResolved) { action.onResolved() }
-      } catch (e) {
+      } catch (e:any) {
         yield put(showMessage(e.message, MSG_TYPE.WARNING))
-        yield put(AccountAction.findpwdFailed(e.message))
+        yield put(AccountAction.findpwdFailed(e))
       }
     },
     *[AccountAction.resetpwd({}, () => {/** empty */ }).type](action: any) {
@@ -258,9 +258,9 @@ const relatives = {
         }
         yield put(AccountAction.resetpwdSucceeded())
         if (action.onResolved) { action.onResolved() }
-      } catch (e) {
+      } catch (e:any) {
         yield put(showMessage(e.message, MSG_TYPE.WARNING))
-        yield put(AccountAction.resetpwdFailed(e.message))
+        yield put(AccountAction.resetpwdFailed(e))
       }
     },
     *[DO_UPDATE_USER_SETTING](action: DoUpdateUserSettingAction) {

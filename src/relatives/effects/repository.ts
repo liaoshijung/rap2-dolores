@@ -10,7 +10,7 @@ export function* fetchRepositoryCount(action: any) {
   try {
     const count = yield call(RepositoryService.fetchRepositoryCount, action)
     yield put(RepositoryAction.fetchRepositoryCountSucceeded(count))
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.fetchRepositoryCountFailed(e.message))
   }
 }
@@ -18,7 +18,7 @@ export function* fetchRepositoryList(action: any) {
   try {
     const repositories = yield call(RepositoryService.fetchRepositoryList, action)
     yield put(RepositoryAction.fetchRepositoryListSucceeded(repositories))
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.fetchRepositoryListFailed(e.message))
   }
 }
@@ -27,7 +27,7 @@ export function* addRepository(action: any) {
     const repository = yield call(RepositoryService.addRepository, action.repository)
     yield put(RepositoryAction.addRepositorySucceeded(repository))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.addRepositoryFailed(e.message))
   }
 }
@@ -36,7 +36,7 @@ export function* deleteRepository(action: any) {
     const count = yield call(RepositoryService.deleteRepository, action.id)
     yield put(RepositoryAction.deleteRepositorySucceeded(count))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.deleteRepositoryFailed(e.message))
   }
 }
@@ -52,7 +52,7 @@ export function* updateRepository(action: any) {
     yield put(RepositoryAction.updateRepositorySucceeded(params))
     yield put(RepositoryAction.fetchRepository({ id: params.id }))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.updateRepositoryFailed(e.message))
   }
 }
@@ -66,7 +66,7 @@ export function* importRepository(action: any) {
     } else {
       throw new Error(res.message)
     }
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.importRepositoryFailed(e.message))
   }
 }
@@ -79,7 +79,7 @@ export function* importSwaggerRepository(action: any) {
     } else {
       throw new Error(res.message)
     }
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.importSwaggerRepositoryFailed(e.message))
   }
 }
@@ -95,7 +95,7 @@ export function* fetchRepository(action: any) {
       params.token,
     )
     yield put(RepositoryAction.fetchRepositorySucceeded(repository))
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.fetchRepositoryFailed(e.message))
   }
 }
@@ -122,7 +122,7 @@ export function* fetchOwnedRepositoryList(action: any) {
   try {
     const repositories = yield call(RepositoryService.fetchOwnedRepositoryList, action)
     yield put(RepositoryAction.fetchOwnedRepositoryListSucceeded(repositories))
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.fetchOwnedRepositoryListFailed(e.message))
   }
 }
@@ -131,7 +131,7 @@ export function* fetchJoinedRepositoryList(action: any) {
   try {
     const repositories = yield call(RepositoryService.fetchJoinedRepositoryList, action)
     yield put(RepositoryAction.fetchJoinedRepositoryListSucceeded(repositories))
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.fetchJoinedRepositoryListFailed(e.message))
   }
 }
@@ -140,7 +140,7 @@ export function* fetchDefaultVals(action: IFetchDefaultValsAction) {
   try {
     const result = yield call(RepositoryService.fetchDefaultVals, action.payload)
     yield put(RepositoryAction.fetchDefaultValsSucceeded(result))
-  } catch (e) {
+  } catch (e:any) {
     yield put(fetchDefaultValsFailed({ message: e.message }))
   }
 }
@@ -149,7 +149,7 @@ export function* updateDefaultVals(action: IUpdateDefaultValsAction) {
   try {
     yield call(RepositoryService.updateDefaultVals, action.payload)
     yield put(RepositoryAction.updateDefaultValsSucceeded())
-  } catch (e) {
+  } catch (e:any) {
     yield put(RepositoryAction.updateDefaultValsFailed({ message: e.message }))
   }
 }

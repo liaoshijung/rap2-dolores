@@ -25,20 +25,20 @@ const fixValue = ({ type, value }: Readonly<any>) => {
     case 'Number':
       try { // eslint-disable-next-line
         return eval(`(${value})`)
-      } catch (e) {
+      } catch (e:any) {
         return 1
       }
     case 'Boolean':
       try { // eslint-disable-next-line
         return eval(`(${value})`)
-      } catch (e) {
+      } catch (e:any) {
         return true
       }
     case 'Function':
     case 'RegExp':
       try { // eslint-disable-next-line
         return eval(`(${value})`)
-      } catch (e) {
+      } catch (e:any) {
         console.warn(type, value)
       }
       break

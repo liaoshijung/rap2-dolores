@@ -60,8 +60,8 @@ const treeToJson = (tree: any) => {
         try {
           // eslint-disable-next-line
           result[item.name + rule] = eval('(' + item.value + ')') // eslint-disable-line no-eval
-        } catch (e) {
-          console.warn(`{ ${item.name}: ${item.value} } => ${e.message}`) // TODO 2.2 初始值异常，应该直接提示到页面上。
+        } catch (e:any) {
+          console.warn(`{ ${item.name}: ${item.value} } => ${e}`) // TODO 2.2 初始值异常，应该直接提示到页面上。
           result[item.name + rule] = item.value
         }
         break
@@ -70,7 +70,7 @@ const treeToJson = (tree: any) => {
           try {
             // eslint-disable-next-line
             result[item.name + rule] = eval(`(${item.value})`) // eslint-disable-line no-eval
-          } catch (e) {
+          } catch (e:any) {
             result[item.name + rule] = item.value
           }
         } else {
@@ -85,7 +85,7 @@ const treeToJson = (tree: any) => {
           try {
             // eslint-disable-next-line
             result[item.name + rule] = eval(`(${item.value})`) // eslint-disable-line no-eval
-          } catch (e) {
+          } catch (e:any) {
             result[item.name + rule] = item.value
           }
         } else {
@@ -126,8 +126,8 @@ export default {
   treeToJson: (tree: any) => {
     try {
       return treeToJson(tree)
-    } catch (e) {
-      return e.message
+    } catch (e:any) {
+      return e
     }
   },
   sort: (list: any) => {

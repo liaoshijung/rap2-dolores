@@ -138,7 +138,7 @@ class Previewer extends Component<any, any> {
       )
     } catch (ex) {
       if (scopedData) {
-        scopedData.response = `无法预览Mock数据，因为您编写规则导致如下错误：${ex.message}`
+        scopedData.response = `无法预览Mock数据，因为您编写规则导致如下错误：${ex}`
       }
     }
     return <div>发生错误...</div>

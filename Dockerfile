@@ -1,5 +1,5 @@
 # BUILDING
-FROM node:lts-alpine AS builder
+FROM node:16.20.2 AS builder
 
 WORKDIR /app
 

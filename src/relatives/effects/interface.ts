@@ -20,7 +20,7 @@ export function* fetchInterface(action: any) {
     if (action.onResolved) {
       action.onResolved(payload)
     }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(InterfaceAction.fetchInterfaceFailed(e.message))
     if (action.onRejected) {
@@ -34,7 +34,7 @@ export function* addInterface(action: any) {
     const payload = yield call(EditorService.addInterface, action.interface)
     yield put(InterfaceAction.addInterfaceSucceeded(payload))
     if (action.onResolved) { action.onResolved(payload.itf) }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(InterfaceAction.addInterfaceFailed(e.message))
     if (action.onRejected) { action.onRejected() }
@@ -45,7 +45,7 @@ export function* updateInterface(action: any) {
     const result = yield call(EditorService.updateInterface, action.interface)
     yield put(InterfaceAction.updateInterfaceSucceeded(result))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(InterfaceAction.updateInterfaceFailed(e.message))
     if (action.onRejected) { action.onRejected() }
@@ -59,7 +59,7 @@ export function* moveInterface(action: any) {
     yield put(InterfaceAction.moveInterfaceSucceeded())
     yield put(RepositoryAction.refreshRepository())
     action.onResolved && action.onResolved()
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(InterfaceAction.moveInterfaceFailed(e.message))
     action.onRejected && action.onRejected()
@@ -74,7 +74,7 @@ export function* deleteInterface(action: any) {
     const router = yield select((state: RootState) => state.router)
     yield put(replace(StoreStateRouterLocationURI(router).removeQuery('itf').toString()))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(InterfaceAction.deleteInterfaceFailed(e.message))
   }
@@ -83,7 +83,7 @@ export function* fetchInterfaceCount() {
   try {
     const count = yield call(EditorService.fetchInterfaceCount)
     yield put(InterfaceAction.fetchInterfaceCountSucceeded(count))
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(InterfaceAction.fetchInterfaceCountFailed(e.message))
   }
@@ -93,7 +93,7 @@ export function* lockInterface(action: any) {
     const payload = yield call(EditorService.lockInterface, action.id)
     yield put(InterfaceAction.lockInterfaceSucceeded(action.id, payload))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(InterfaceAction.lockInterfaceFailed(e.message))
   }
@@ -107,7 +107,7 @@ export function* unlockInterface(action: any) {
     } else {
       window.alert(`发生错误：${res.errMsg}`)
     }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(InterfaceAction.unlockInterfaceFailed(e.message))
   }
@@ -117,7 +117,7 @@ export function* sortInterfaceList(action: any) {
     const count = yield call(EditorService.sortInterfaceList, action.ids)
     yield put(InterfaceAction.sortInterfaceListSucceeded(count, action.ids, action.moduleId))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(InterfaceAction.sortInterfaceListFailed(e.message))
   }

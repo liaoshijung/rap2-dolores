@@ -43,7 +43,7 @@ export default {
       try {
         const logs = yield call(AccountService.fetchLogList, action)
         yield put(AccountAction.fetchLogListSucceeded(logs))
-      } catch (e) {
+      } catch (e:any) {
         yield put(AccountAction.fetchLogListFailed(e.message))
       }
     },

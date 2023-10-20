@@ -72,7 +72,7 @@ export default {
       try {
         const counter = yield call(StatusService.fetchCounter)
         yield put(StatusAction.fetchCounterSucceeded(counter))
-      } catch (e) {
+      } catch (e:any) {
         yield put(StatusAction.fetchCounterFailed(e.message))
       }
     },
@@ -80,7 +80,7 @@ export default {
       try {
         const analytics = yield call(StatusService.fetchRepositoriesCreated as any, action)
         yield put(StatusAction.fetchAnalyticsRepositoriesCreatedSucceeded(analytics))
-      } catch (e) {
+      } catch (e:any) {
         yield put(StatusAction.fetchAnalyticsRepositoriesCreatedFailed(e.message))
       }
     },
@@ -88,7 +88,7 @@ export default {
       try {
         const analytics = yield call(StatusService.fetchRepositoriesUpdated as any, action)
         yield put(StatusAction.fetchAnalyticsRepositoriesUpdatedSucceeded(analytics))
-      } catch (e) {
+      } catch (e:any) {
         yield put(StatusAction.fetchAnalyticsRepositoriesUpdatedFailed(e.message))
       }
     },
@@ -96,7 +96,7 @@ export default {
       try {
         const analytics = yield call(StatusService.fetchUsersActivation as any, action)
         yield put(StatusAction.fetchAnalyticsUsersActivationSucceeded(analytics))
-      } catch (e) {
+      } catch (e:any) {
         yield put(StatusAction.fetchAnalyticsUsersActivationFailed(e.message))
       }
     },
@@ -104,7 +104,7 @@ export default {
       try {
         const analytics = yield call(StatusService.fetchRepositoriesActivation as any, action)
         yield put(StatusAction.fetchAnalyticsRepositoriesActivationSucceeded(analytics))
-      } catch (e) {
+      } catch (e:any) {
         yield put(StatusAction.fetchAnalyticsRepositoriesActivationFailed(e.message))
       }
     },

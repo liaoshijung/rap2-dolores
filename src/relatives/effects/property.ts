@@ -10,7 +10,7 @@ export function* addProperty(action: any) {
     const property = yield call(EditorService.addProperty, action.property)
     yield put(PropertyAction.addPropertySucceeded(property))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(PropertyAction.addPropertyFailed(e.message))
     if (action.onRejected) { action.onRejected() }
@@ -21,7 +21,7 @@ export function* deleteProperty(action: any) {
     const count = yield call(EditorService.deleteProperty, action.id)
     yield put(PropertyAction.deletePropertySucceeded(count))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(PropertyAction.deletePropertyFailed(e.message))
   }
@@ -31,7 +31,7 @@ export function* updateProperty(action: any) {
     const property = yield call(EditorService.updateProperty, action.property)
     yield put(PropertyAction.updatePropertySucceeded(property))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(PropertyAction.updatePropertyFailed(e.message))
     if (action.onRejected) { action.onRejected() }
@@ -45,7 +45,7 @@ export function* updateProperties(action: any) {
       properties: result.properties,
     }))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(PropertyAction.updatePropertiesFailed(e.message))
     if (action.onRejected) { action.onRejected() }
@@ -56,7 +56,7 @@ export function* sortPropertyList(action: any) {
     const count = yield call(EditorService.sortPropertyList, action.ids)
     yield put(PropertyAction.sortPropertyListSucceeded(count))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(PropertyAction.sortPropertyListFailed(e.message))
   }

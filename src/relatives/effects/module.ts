@@ -15,7 +15,7 @@ export function* addModule(action: any) {
     yield put(ModuleAction.addModuleSucceeded(module))
     yield put(RepositoryAction.refreshRepository())
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(ModuleAction.addModuleFailed(e.message))
     if (action.onRejected) { action.onRejected() }
@@ -42,7 +42,7 @@ export function* updateModule(action: any) {
       url: payload.url,
     }))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(ModuleAction.updateModuleFailed(e.message))
     if (action.onRejected) { action.onRejected() }
@@ -57,7 +57,7 @@ export function* moveModule(action: any) {
     yield put(replace(pathname + hash + `?id=${query.id}`))
     yield put(RepositoryAction.refreshRepository())
     action.onResolved && action.onResolved()
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     action.onRejected && action.onRejected()
   }
@@ -71,7 +71,7 @@ export function* deleteModule(action: any) {
     yield put(replace(pathname + hash + `?id=${query.id}`))
     yield put(RepositoryAction.refreshRepository())
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(ModuleAction.deleteModuleFailed(e.message))
   }
@@ -82,7 +82,7 @@ export function* sortModuleList(action: any) {
     const count = yield call(EditorService.sortModuleList, action.ids)
     yield put(ModuleAction.sortModuleListSucceeded(count, action.ids))
     if (action.onResolved) { action.onResolved() }
-  } catch (e) {
+  } catch (e:any) {
     console.error(e.message)
     yield put(ModuleAction.sortModuleListFailed(e.message))
   }
