@@ -12,7 +12,7 @@
     "test-backup": "npm run lint && react-scripts test --env=jsdom",
     "test": "npm run lint",
     "eject": "react-scripts eject",
-    "lint": "tslint --project ./ -c tslint.json --fix",
+    "lint": "echo \"TSLint checking...\" && eslint -c .eslintrc.json --fix",
     "build-docker": "docker build --rm -f \"Dockerfile\" -t rapteam/rap2-dolores:latest ."
   },
   "repository": {
@@ -120,7 +120,8 @@
     "standard": "14.3.1",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
     "@typescript-eslint/parser": "^6.7.5",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "eslint": "^7.32.0"
   },
   "pre-commit": [
     "lint"
