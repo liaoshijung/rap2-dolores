@@ -20,7 +20,7 @@ RUN npm run lint && \
     npm run build
 
 # nginx
-FROM nginx:stable-alpine
+FROM registry.cn-hangzhou.aliyuncs.com/westsoft/nginx:stable-alpine
 
 COPY --from=builder app/build /dolores
 RUN rm /etc/nginx/conf.d/default.conf
