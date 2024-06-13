@@ -85,10 +85,10 @@ function RepositoryForm(props: Props) {
   const classes = useStyles()
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(fetchJoinedOrganizationList())
-    dispatch(fetchOwnedOrganizationList())
-  }, [dispatch])
+  // useEffect(() => {
+  //   dispatch(fetchJoinedOrganizationList())
+  //   dispatch(fetchOwnedOrganizationList())
+  // }, [dispatch])
 
   if (repository) {
     repository = { ...FORM_STATE_INIT, ...repository }
@@ -160,7 +160,7 @@ function RepositoryForm(props: Props) {
                       <div className={classes.formItem}>
                         <div className={classes.formTitle}>拥有者</div>
 
-                        {values.owner && values.owner.id === auth.id ? (
+                        {values.owner && (values.owner.id === auth.id || auth.role === 1) ? (
                           <UserList
                             isMulti={false}
                             loadOptions={loadUserOptions}

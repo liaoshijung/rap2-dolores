@@ -8,6 +8,7 @@ export interface RootState {
     empId: string
     fullname: string
     email: string
+    role: number
   }
   router: RouterState
   repository: any
@@ -74,6 +75,7 @@ export interface User {
   fullname: string
   email: string
   empId: string
+  role: number
 }
 
 export interface INumItem {

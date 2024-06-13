@@ -19,6 +19,7 @@ function OrganizationBlock(props: Props) {
   const { organization } = props
   const auth = useSelector((state: RootState) => state.auth)
   const [update, setUpdate] = useState(false)
+  const isAdmin = auth.role === 1;
   const owned = organization.owner && organization.owner.id === auth.id
   const joined = organization.members!.find(user => user.id === auth.id) || organization.readers!.find(user => user.id === auth.id)
   const selfHelpJoin = false // DONE 2.1 不允许自助加入团队
@@ -44,7 +45,7 @@ function OrganizationBlock(props: Props) {
           <span>{organization.owner!.fullname}</span>
         </div>
         <div className="toolbar">
-          {owned ? ( // 拥有或已加入
+          {owned||isAdmin ? ( // 拥有或已加入
             <span
               className="fake-link"
               onClick={() => setUpdate(true)}
@@ -57,7 +58,7 @@ function OrganizationBlock(props: Props) {
             open={update}
             onClose={() => setUpdate(false)}
           />
-          {owned ? ( // 拥有
+          {owned||isAdmin ? ( // 拥有
             <span
               className="fake-link"
               onClick={e => {

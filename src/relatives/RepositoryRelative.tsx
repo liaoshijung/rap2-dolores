@@ -5,6 +5,7 @@ import * as InterfaceEffects from './effects/interface'
 import * as ModuleAction from '../actions/module'
 import * as ModuleEffects from './effects/module'
 import * as RepositoryAction from '../actions/repository'
+import * as OrganizationAction from '../actions/organization'
 import * as RepositoryEffects from './effects/repository'
 import _ from 'lodash'
 export default {
@@ -490,6 +491,8 @@ export default {
     '/repository/joined': [
       RepositoryAction.fetchOwnedRepositoryList,
       RepositoryAction.fetchJoinedRepositoryList,
+      OrganizationAction.fetchJoinedOrganizationList,
+      OrganizationAction.fetchOwnedOrganizationList,
     ],
     '/repository/editor': [
       // REPOSITORY_LOCATION_CHANGE 判断了如果是当前 repo 的模块或接口切换就不重新获取

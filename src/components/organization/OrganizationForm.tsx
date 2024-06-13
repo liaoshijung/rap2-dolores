@@ -118,7 +118,7 @@ function OrganizationForm(props: Props) {
                     {values.id > 0 &&
                       <div className={classes.formItem}>
                         <div className={classes.formTitle}>项目Owner</div>
-                        {values.owner && (values.owner.id === auth.id)
+                        {values.owner && (values.owner.id === auth.id || auth.role === 1)
                           ? <UserList
                             isMulti={false}
                             value={newOwner}
