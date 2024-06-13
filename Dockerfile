@@ -1,5 +1,5 @@
 # BUILDING
-FROM node:16.20.2 AS builder
+FROM registry.cn-hangzhou.aliyuncs.com/westsoft/node:16.20.2 AS builder
 
 WORKDIR /app
 
